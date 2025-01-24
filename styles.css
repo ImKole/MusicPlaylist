@@ -1,0 +1,63 @@
+/* Apply background color to both the header and body */
+body, .header {
+    background-color: #EBEBDF;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    /* border-bottom: 3px solid #C19570; /* Warm brown for a subtle divider */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 85px;
+}
+
+/* Logo Styling */
+.logo {
+    height: 75px;
+    margin: 0;
+}
+
+/* Navbar Links */
+.navbar a {
+    font-size: 18px;
+    color: #EB831B; /* Orange */
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.navbar a:hover {
+    color: #000000; /* Changes to black on hover */
+}
+
+/* Navbar Underline Effect */
+.navbar a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #EB831B; /* Orange underline */
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
