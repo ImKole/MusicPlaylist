@@ -1,5 +1,5 @@
-/* Apply background color to both the header and body */
-body, .header {
+/* General Page Styling */
+body {
     background-color: #EBEBDF;
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -13,140 +13,119 @@ body, .header {
     left: 0;
     width: 100%;
     padding: 20px 80px;
+    background: #EBEBDF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    /*border-bottom: 3px solid #C19570; /* Warm brown for a subtle divider */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /*  border-bottom: 2px solid #C19570;*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 85px;
 }
 
-/* Logo Styling */
+/* Logo */
 .logo {
-    height: 75px;
-    margin: 0;
+    height: 70px;
 }
 
-/* Navbar Links */
+/* Navigation Links */
 .navbar a {
     font-size: 18px;
-    color: #EB831B; /* Orange */
+    color: #EB831B;
     font-weight: 600;
     text-decoration: none;
     margin-left: 30px;
     font-family: 'Poppins', sans-serif;
-    position: relative;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s;
 }
 
-/* Hover Effect */
 .navbar a:hover {
-    color: #000000; /* Changes to black on hover */
+    color: #000000;
 }
 
-/* Navbar Underline Effect */
-.navbar a::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: #EB831B; /* Orange underline */
-    transition: width 0.3s ease-in-out;
-}
-
-.navbar a:hover::before {
-    width: 100%;
-}
-
-/* Center Content Below Header */
+/* Main Content Styling */
 .content {
     text-align: center;
-    margin-top: 120px; /* Adjusted so it's below the fixed header */
+    margin-top: 120px;
 }
 
-/* "Music Moods" Title */
+/* Title */
 .title {
     font-size: 50px;
-    color: #000000;
     font-weight: 700;
-    margin-bottom: 20px;
+    color: #000000;
+    margin-bottom: 15px;
 }
 
 /* Search Bar */
 .search-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .search-bar {
-    width: 40%;
-    padding: 10px;
+    width: 50%;
+    padding: 12px;
     font-size: 18px;
-    border: 2px solid #C19570; /* Brown border */
-    border-radius: 5px;
+    border: 2px solid #C19570;
+    border-radius: 8px 0 0 8px;
     outline: none;
 }
 
-.search-button {
-    background-color: #EB831B; /* Orange */
-    color: white;
-    border: none;
-    padding: 10px 20px;
+.search-btn {
+    padding: 12px 15px;
     font-size: 18px;
-    border-radius: 5px;
+    border: 2px solid #C19570;
+    background-color: #AAC4E7;
+    color: black;
     cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease-in-out;
+    border-radius: 0 8px 8px 0;
 }
 
-.search-button:hover {
-    background-color: #C19570; /* Brown */
+.search-btn:hover {
+    background-color: #EB831B;
+    color: white;
 }
 
 /* Emotion Selection Boxes */
 .emotion-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    padding: 20px;
+    gap: 15px;
+    max-width: 80%;
+    margin: 30px auto;
 }
 
+/* Emotion Box Styling */
 .emotion-box {
-    background-color: #AAC4E7; /* Light Blue */
-    color: #000000; /* Black text */
+    background-color: #AAC4E7;
+    color: #000000;
     border: none;
     padding: 20px;
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    transition: background 0.3s, transform 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150px;
-    width: 150px;
+    height: 140px;
+    width: 140px;
 }
 
-/* FontAwesome Icons in Emotion Boxes */
+/* FontAwesome Icons */
 .emotion-box i {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    margin-bottom: 8px;
 }
 
 /* Hover Effect */
 .emotion-box:hover {
-    background-color: #EB831B; /* Orange on hover */
+    background-color: #EB831B;
     transform: scale(1.05);
 }
-
-

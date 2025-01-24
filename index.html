@@ -5,44 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Playlist Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+
+    <!-- Header Section -->
     <header class="header">
-        <a href="index.html"><img class="logo" src="images/logo.jpg" alt="Logo"></a>
+        <a href="index.html"><img class="logo" src="images/logo.jpg" alt="Music Moods Logo"></a>
         <nav class="navbar">
             <a href="index.html">Home</a>
-            <a href="#saved Playlist">Saved Playlist</a>
+            <a href="#savedPlaylist">Saved Playlist</a>
             <a href="#Rankings">Rankings</a>
-            <a href="#Log Out">Log Out</a>
-            <a href="#Sign Up">Sign Up</a>
+            <a href="#LogOut">Log Out</a>
+            <a href="#SignUp">Sign Up</a>
         </nav>
     </header>
 
-    <!-- Music Moods Section -->
+    <!-- Main Content -->
     <main class="content">
         <br>
         <h1 class="title">Music Moods</h1>
-        
-        <!-- Search Bar -->
         <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search for a mood, genre, or artist...">
-            <button class="search-button">Search</button>
+            <input type="text" class="search-bar" placeholder="Search for a mood...">
+            <button class="search-btn"><i class="fa fa-search"></i></button>
         </div>
 
         <!-- Emotion Selection Boxes -->
         <div class="emotion-container">
             <button class="emotion-box"><i class="fa-solid fa-face-smile"></i> Happy</button>
             <button class="emotion-box"><i class="fa-solid fa-face-sad-tear"></i> Sad</button>
-            <button class="emotion-box"><i class="fa-solid fa-face-relaxed"></i> Relaxed</button>
+            <button class="emotion-box"><i class="fa-solid fa-bed"></i> Relaxed</button>
             <button class="emotion-box"><i class="fa-solid fa-bolt"></i> Energetic</button>
             <button class="emotion-box"><i class="fa-solid fa-heart"></i> Romantic</button>
             <button class="emotion-box"><i class="fa-solid fa-face-angry"></i> Angry</button>
         </div>
     </main>
+
 </body>
 </html>
-
-
 
