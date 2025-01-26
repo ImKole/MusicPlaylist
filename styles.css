@@ -5,6 +5,7 @@ body {
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
+    padding-top: 100px;
 }
 
 /* Header Styling */
@@ -111,6 +112,7 @@ body {
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
+    box-shadow: 0 0 10px #AAC4E7;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     display: flex;
@@ -170,6 +172,7 @@ body {
     justify-content: center;
     height: 140px;
     width: 140px;
+    box-shadow: 0 0 10px #AAC4E7;
 }
 
 /* FontAwesome Music Icons */
