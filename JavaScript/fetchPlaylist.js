@@ -1,11 +1,7 @@
-import mockPlaylists from "../mockData.js";  // Import the mock data
+import mockData from "./mockData.js";
 
-function fetchPlaylists() {
+export default async function fetchPlaylists() {
     return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(mockPlaylists);  // Simulate API delay
-        }, 500);  // 500ms delay
+        setTimeout(() => resolve(mockData), 500); // Simulate delay
     });
 }
-
-export default fetchPlaylists;  // Make the function available for use
