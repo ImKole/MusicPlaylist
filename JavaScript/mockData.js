@@ -16,6 +16,7 @@ const mockPlaylists = [
             { id: 104, title: "High Energy", artist: "Electro Max" }
         ]
     }
+
 ];
 
 export default mockPlaylists;
