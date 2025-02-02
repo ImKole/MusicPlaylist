@@ -1,30 +1,26 @@
 import fetchPlaylists from "../JavaScript/fetchPlaylist.js";
 
-async function displayPlaylists() {
+async function displayPlaylist() {
     const playlists = await fetchPlaylists();
-    console.log("Fetched Playlists:", playlists);
+    console.log("Fetched Playlist:", playlists);
 
-    const playlistContainer = document.querySelector(".playlist-container");
+    const playlistContainer = document.querySelector("playlist-container");
 
-    // Clear existing content
+    //Clear existing content
     playlistContainer.innerHTML = "";
 
-    // Loop through fetched playlists and create elements
-    playlists.forEach((playlist, index) => {
+    //Loop through fetched playlist and create elements
+    playlistContainer.forEach((playlist, index) => {
         const button = document.createElement("button");
         button.classList.add("playlist-box");
-        button.innerHTML = `<i class="fa-solid fa-music"></i> ${playlist.name}`;
-        button.setAttribute("data-playlist-id", playlist.id);
+        button.innerHTML = `<i class="fa-solid fa-music"></i> ${playlist.name}` ;
 
-        // Optional: Add click event to load more details
-        button.addEventListener("click", () => {
-            alert(`Selected Playlist: ${playlist.name}`);
-            // You can expand this to show playlist details in another section
-        });
-
-        playlistContainer.appendChild(button);
     });
+
+    playlistContainer.appendChild(button);
+
+
 }
 
-// Load playlists when the page loads
-document.addEventListener("DOMContentLoaded", displayPlaylists);
+//Load playlists when the page loads
+document.addEventListener("DOMContentLoader", displayPlaylist);
