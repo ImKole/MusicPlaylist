@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="styles.credentials.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Music Playlist</title>
+  <link rel="stylesheet" href="styles.credentials.css">
 </head>
-<body>
-    <div class="header">
-        <div class="navbar">
-            <a href="signup.html">Sign Up</a>
-        </div>
-    </div>
-    <div class="form-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <a href="#" class="forgot-password">Forgot Password?</a>
-    </div>
+<body class="light-mode">
+  <div class="container">
+    <h1>Login to Your Account</h1>
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter Username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter Password">
+    
+    <button onclick="login()">Login</button>
+    <p id="loginMessage"></p>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            if (document.getElementById('username').value && document.getElementById('password').value) {
-                window.location.href = 'index.html'; 
-            }
-        });
-    </script>
+    <p><a href="forgotpassword.html">Forgot Password?</a></p>  <!-- Forgot Password Link Would Go Here -->
+
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const serverResponse = {
+        status: "success",
+        message: "Login successful!",
+        user: { username: "user123" },
+      };
+
+      if (serverResponse.status === "success") {
+        document.getElementById("loginMessage").innerText = serverResponse.message;
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      } else {
+        document.getElementById("loginMessage").innerText = "Invalid login credentials.";
+      }
+    }
+  </script>
 </body>
 </html>
