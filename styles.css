@@ -33,7 +33,7 @@ body {
 /* Navigation Links */
 .navbar a {
     font-size: 18px;
-    color: #292521;
+    color: #bf263c;
     font-weight: 600;
     text-decoration: none;
     margin-left: 30px;
@@ -42,7 +42,7 @@ body {
 }
 
 .navbar a:hover {
-    color: #d8334a;
+    color: #292521;
 }
 
 /* Main Content Styling */
@@ -55,7 +55,7 @@ body {
 .title {
     font-size: 50px;
     font-weight: 700;
-    color: #292521;
+    color: #bf263c;
     margin-bottom: 15px;
     font-family: "Playfair Display", serif;
 }
@@ -72,13 +72,13 @@ body {
     width: 40%;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #d8334a; 
+    border: 2px solid #bf263c; 
     border-radius: 5px;
     outline: none;
 }
 
 .search-btn {
-    background-color: #d8334a; 
+    background-color: #bf263c; 
     color: #EFEDE9;
     border: none;
     padding: 10px 20px;
@@ -90,7 +90,7 @@ body {
 }
 
 .search-btn:hover {
-    background-color: #bf263c;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -106,7 +106,7 @@ body {
 
 /* Emotion Box Styling */
 .emotion-box {
-    background-color: #d8334a;
+    background-color: #BF263C;
     color: #EFEDE9;
     border: none;
     padding: 20px;
@@ -114,7 +114,7 @@ body {
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
-    box-shadow: 0 0 10px #d8334a;
+    box-shadow: 0 0 10px #bf263c;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     display: flex;
@@ -133,7 +133,7 @@ body {
 
 /* Hover Effect */
 .emotion-box:hover {
-    background-color: #bf263c;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -158,7 +158,7 @@ body {
 
 /* Playlist Box Styling */
 .playlist-box {
-    background-color: #d8334a;
+    background-color: #BF263C;
     color: #EFEDE9;
     border: none;
     padding: 20px;
@@ -185,7 +185,7 @@ body {
 
 /* Hover Effect */
 .playlist-box:hover {
-    background-color: #bf263c;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
