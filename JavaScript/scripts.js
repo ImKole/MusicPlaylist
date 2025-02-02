@@ -1,20 +1,17 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var checkbox = document.getElementById('darkmode-toggle');
-
-    // Check the checkbox status and update the mode
-    function updateMode() {
-        if (checkbox.checked) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
-    }
-
-    // Event listener for changes on the checkbox
-    checkbox.addEventListener('change', function() {
-        updateMode();
+// Dark mode toggle script
+document.getElementById('darkmode-toggle').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('.header').classList.toggle('dark-mode');
+    document.querySelectorAll('.emotion-box').forEach(function(box) {
+        box.classList.toggle('dark-mode');
     });
-
-    // Initial check in case the checkbox is saved as checked
-    updateMode();
+    document.querySelectorAll('.playlist-box').forEach(function(box) {
+        box.classList.toggle('dark-mode');
+    });
+    document.querySelectorAll('.search-bar').forEach(function(bar) {
+        bar.classList.toggle('dark-mode');
+    });
+    document.querySelectorAll('.search-btn').forEach(function(btn) {
+        btn.classList.toggle('dark-mode');
+    });
 });
