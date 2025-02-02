@@ -1,6 +1,6 @@
 /* General Page Styling */
 body {
-    background-color: #ffffff;
+    background-color: #EFEDE9;
     font-family: "Lato", serif; 
     font-optical-sizing: auto;
     font-weight: normal;
@@ -15,12 +15,12 @@ body {
     left: 0;
     width: 100%;
     padding: 20px 80px;
-    background: #ffffff;
+    background: #EFEDE9;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 0 19px #AAC4E7;
+    box-shadow: 0 0 19px #d8334a;
     height: 85px;
 }
 
@@ -33,7 +33,7 @@ body {
 /* Navigation Links */
 .navbar a {
     font-size: 18px;
-    color: #000000;
+    color: #bf263c;
     font-weight: 600;
     text-decoration: none;
     margin-left: 30px;
@@ -42,7 +42,7 @@ body {
 }
 
 .navbar a:hover {
-    color: #EB831B;
+    color: #292521;
 }
 
 /* Main Content Styling */
@@ -55,7 +55,7 @@ body {
 .title {
     font-size: 50px;
     font-weight: 700;
-    color: #000000;
+    color: #bf263c;
     margin-bottom: 15px;
     font-family: "Playfair Display", serif;
 }
@@ -72,25 +72,26 @@ body {
     width: 40%;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #AAC4E7; /* Brown border */
+    border: 2px solid #bf263c; 
     border-radius: 5px;
     outline: none;
 }
 
 .search-btn {
-    background-color: #AAC4E7; 
-    color: white;
+    background-color: #bf263c; 
+    color: #EFEDE9;
     border: none;
     padding: 10px 20px;
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .search-btn:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
+    transform: scale(1.05);
 }
 
 /* Emotion Selection Boxes */
@@ -105,15 +106,15 @@ body {
 
 /* Emotion Box Styling */
 .emotion-box {
-    background-color: #AAC4E7;
-    color: #000000;
+    background-color: #BF263C;
+    color: #EFEDE9;
     border: none;
     padding: 20px;
     font-family: "Lato", serif; 
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
-    box-shadow: 0 0 10px #AAC4E7;
+    box-shadow: 0 0 10px #bf263c;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     display: flex;
@@ -132,7 +133,7 @@ body {
 
 /* Hover Effect */
 .emotion-box:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -140,7 +141,7 @@ body {
 .subtitle {
     font-size: 40px;
     font-weight: 700;
-    color: #000000;
+    color: #292521;
     margin-top: 40px;
     font-family: "Playfair Display", serif; 
 }
@@ -157,8 +158,8 @@ body {
 
 /* Playlist Box Styling */
 .playlist-box {
-    background-color: #AAC4E7;
-    color: #000000;
+    background-color: #BF263C;
+    color: #EFEDE9;
     border: none;
     padding: 20px;
     font-family: "Lato", serif; 
@@ -173,7 +174,7 @@ body {
     justify-content: center;
     height: 140px;
     width: 140px;
-    box-shadow: 0 0 10px #AAC4E7;
+    box-shadow: 0 0 10px #d8334a;
 }
 
 /* FontAwesome Music Icons */
@@ -184,7 +185,7 @@ body {
 
 /* Hover Effect */
 .playlist-box:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -206,7 +207,7 @@ body {
 
     .navbar a {
         font-size: 18px;
-        color: #000000;
+        color: #292521;
         font-weight: 600;
         text-decoration: none;
         margin-left: 10px;
@@ -215,7 +216,7 @@ body {
     }
 
     .navbar a:hover {
-        color: #EB831B;
+        color: #bf263c;
     }
 
     .navbar {
