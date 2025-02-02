@@ -1,22 +1,18 @@
-fetch("savedPlaylists.json")
-  .then(response => response.json())
-  .then(data => {
-    document.querySelectorAll(".playlist-box").forEach((button, index) => {
-      button.addEventListener("click", () => {
-        let playlist = data.savedPlaylists[index];
-        showSavedPlaylistPopup(playlist);
-      });
-    });
-  });
+import { savedPlaylists } from "..JavaScript/mockSavedData.js";
 
-function showSavedPlaylistPopup(playlist) {
-  let popupContent = `<h2>${playlist.name}</h2><ul>`;
-  playlist.songs.forEach(song => {
-    popupContent += `<li><a href="${song.url}" target="_blank">${song.title} - ${song.artist}</a></li>`;
-  });
-  popupContent += "</ul>";
-  
-  // Display the popup
-  document.getElementById("popup").innerHTML = popupContent;
-  document.getElementById("popup").style.display = "block";
+const playlistContainer = document.querySelector(".playlist-container");
+
+function displaySavedPlaylists() {
+    playlistContainer.innerHTML = "";
+    savedPlaylists.forEach(playlist => {
+        const btn = document.createElement("button");
+        btn.className = "playlist-box";
+        btn.innerHTML = `<i class='fa-solid fa-music'></i> ${playlist.name}`;
+        btn.addEventListener("click", () => {
+            alert(`Songs in ${playlist.name}: \n${playlist.songs.join("\n")}`);
+        });
+        playlistContainer.appendChild(btn);
+    });
 }
+
+displaySavedPlaylists();

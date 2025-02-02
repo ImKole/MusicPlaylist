@@ -1,23 +1,27 @@
-fetch("playlists.json")
-  .then(response => response.json())
-  .then(data => {
-    document.querySelectorAll(".emotion-box").forEach(button => {
-      button.addEventListener("click", () => {
-        let mood = button.textContent.trim();
-        let playlist = data.playlists[mood];
-        showPlaylistPopup(mood, playlist);
-      });
-    });
-  });
 
-function showPlaylistPopup(mood, playlist) {
-  let popupContent = `<h2>${mood} Playlist</h2><ul>`;
-  playlist.forEach(song => {
-    popupContent += `<li><a href="${song.url}" target="_blank">${song.title} - ${song.artist}</a></li>`;
+import { emotionData } from "./mockEmotionData.js";
+
+console.log(emotionData); // Check if data is loaded correctly
+
+
+const emotionButtons = document.querySelectorAll(".emotion-box");
+const searchBar = document.querySelector(".search-bar");
+
+emotionButtons.forEach(button => {
+  button.addEventListener("click", () => {
+      const mood = button.textContent.trim();
+      displaySongs(mood);
   });
-  popupContent += "</ul>";
-  
-  // Display the popup
-  document.getElementById("popup").innerHTML = popupContent;
-  document.getElementById("popup").style.display = "block";
+});
+
+searchBar.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+      displaySongs(searchBar.value);
+  }
+});
+
+function displaySongs(mood) {
+  const songList = emotionData[mood] || [];
+  alert(`Songs for ${mood}: \n${songList.join("\n")}`);
 }
+
