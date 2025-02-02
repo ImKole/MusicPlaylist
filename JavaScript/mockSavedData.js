@@ -1,0 +1,19 @@
+{
+    "savedPlaylists"; [
+      {
+        "name": "Playlist 1",
+        "songs": [
+          { "title": "Song A", "artist": "Artist 1", "url": "https://example.com/song-a.mp3" },
+          { "title": "Song B", "artist": "Artist 2", "url": "https://example.com/song-b.mp3" }
+        ]
+      },
+      {
+        "name": "Playlist 2",
+        "songs": [
+          { "title": "Song C", "artist": "Artist 3", "url": "https://example.com/song-c.mp3" },
+          { "title": "Song D", "artist": "Artist 4", "url": "https://example.com/song-d.mp3" }
+        ]
+      }
+    ]
+  }
+  
