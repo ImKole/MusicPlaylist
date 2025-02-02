@@ -13,6 +13,13 @@
           { "title": "Song C", "artist": "Artist 3", "url": "https://example.com/song-c.mp3" },
           { "title": "Song D", "artist": "Artist 4", "url": "https://example.com/song-d.mp3" }
         ]
+      },
+      {
+        "name": "Playlist 3",
+        "songs": [
+          { "title": "Song E", "artist": "Artist 5", "url": "https://example.com/song-c.mp3" },
+          { "title": "Song F", "artist": "Artist 6", "url": "https://example.com/song-d.mp3" }
+        ]
       }
     ]
   }
