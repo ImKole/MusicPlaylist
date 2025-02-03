@@ -17,7 +17,7 @@
     <button onclick="login()">Login</button>
     <p id="loginMessage"></p>
 
-    <p><a href="forgotpassword.html">Forgot Password?</a></p>  <!-- Forgot Password Link Would Go Here -->
+    <p><a href="forgotpassword.html">Forgot Password?</a></p>  <!-- Forgot Password Link -->
 
     <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
   </div>
@@ -27,6 +27,7 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
+      // Simulating server response for login
       const serverResponse = {
         status: "success",
         message: "Login successful!",
@@ -36,7 +37,7 @@
       if (serverResponse.status === "success") {
         document.getElementById("loginMessage").innerText = serverResponse.message;
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "index.html"; // Redirecting to the home page
         }, 1000);
       } else {
         document.getElementById("loginMessage").innerText = "Invalid login credentials.";
