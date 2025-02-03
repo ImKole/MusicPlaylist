@@ -1,11 +1,18 @@
 /* General Page Styling */
 body {
-    background-color: #ffffff;
+    background-color: #EFEDE9;
     font-family: "Lato", serif; 
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
     padding-top: 100px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #292521;
+    color: #EFEDE9;
 }
 
 /* Header Styling */
@@ -15,13 +22,19 @@ body {
     left: 0;
     width: 100%;
     padding: 20px 80px;
-    background: #ffffff;
+    background: #EFEDE9;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 0 19px #AAC4E7;
+    box-shadow: 0 0 19px #d8334a;
     height: 85px;
+    transition: background-color 0.3s ease; /* Smooth transition for header background */
+}
+
+.header.dark-mode {
+    background: #292521;
+    box-shadow: 0 0 19px #BF263C;
 }
 
 /* Logo */
@@ -31,9 +44,15 @@ body {
 }
 
 /* Navigation Links */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This creates space between links and icons */
+}
+
 .navbar a {
     font-size: 18px;
-    color: #000000;
+    color: #bf263c;
     font-weight: 600;
     text-decoration: none;
     margin-left: 30px;
@@ -42,7 +61,7 @@ body {
 }
 
 .navbar a:hover {
-    color: #EB831B;
+    color: #292521;
 }
 
 /* Main Content Styling */
@@ -55,7 +74,7 @@ body {
 .title {
     font-size: 50px;
     font-weight: 700;
-    color: #000000;
+    color: #bf263c;
     margin-bottom: 15px;
     font-family: "Playfair Display", serif;
 }
@@ -72,25 +91,33 @@ body {
     width: 40%;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #AAC4E7; /* Brown border */
+    border: 2px solid #EFEDE9; 
     border-radius: 5px;
     outline: none;
+    transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.search-bar.dark-mode {
+    border-color: #EFEDE9;
+    background-color: #EFEDE9; /* Dark background for input */
+    color: #EFEDE9; /* White text in dark mode */
 }
 
 .search-btn {
-    background-color: #AAC4E7; 
-    color: white;
+    background-color: #bf263c; 
+    color: #EFEDE9;
     border: none;
     padding: 10px 20px;
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .search-btn:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
+    transform: scale(1.05);
 }
 
 /* Emotion Selection Boxes */
@@ -105,15 +132,15 @@ body {
 
 /* Emotion Box Styling */
 .emotion-box {
-    background-color: #AAC4E7;
-    color: #000000;
+    background-color: #BF263C;
+    color: #EFEDE9;
     border: none;
     padding: 20px;
     font-family: "Lato", serif; 
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
-    box-shadow: 0 0 10px #AAC4E7;
+    box-shadow: 0 0 10px #bf263c;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     display: flex;
@@ -132,7 +159,7 @@ body {
 
 /* Hover Effect */
 .emotion-box:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -140,7 +167,7 @@ body {
 .subtitle {
     font-size: 40px;
     font-weight: 700;
-    color: #000000;
+    color: #292521;
     margin-top: 40px;
     font-family: "Playfair Display", serif; 
 }
@@ -157,8 +184,8 @@ body {
 
 /* Playlist Box Styling */
 .playlist-box {
-    background-color: #AAC4E7;
-    color: #000000;
+    background-color: #BF263C;
+    color: #EFEDE9;
     border: none;
     padding: 20px;
     font-family: "Lato", serif; 
@@ -173,7 +200,7 @@ body {
     justify-content: center;
     height: 140px;
     width: 140px;
-    box-shadow: 0 0 10px #AAC4E7;
+    box-shadow: 0 0 10px #292521;
 }
 
 /* FontAwesome Music Icons */
@@ -184,7 +211,7 @@ body {
 
 /* Hover Effect */
 .playlist-box:hover {
-    background-color: #EB831B;
+    background-color: #d8334a;
     transform: scale(1.05);
 }
 
@@ -206,7 +233,7 @@ body {
 
     .navbar a {
         font-size: 18px;
-        color: #000000;
+        color: #292521;
         font-weight: 600;
         text-decoration: none;
         margin-left: 10px;
@@ -215,7 +242,7 @@ body {
     }
 
     .navbar a:hover {
-        color: #EB831B;
+        color: #bf263c;
     }
 
     .navbar {
@@ -226,4 +253,80 @@ body {
     .navbar a {
         margin: 10px 0;
     }
+}
+
+/* Dark Mode Button */
+#darkmode-toggle:checked + svg.sun {
+    display: none; /* Hide sun icon when in dark mode */
+}
+
+#darkmode-toggle:checked + svg.sun + svg.moon {
+    display: inline-block; /* Show moon icon when in dark mode */
+}
+
+.dark-mode .search-btn {
+    background-color: #BF263C;
+    color: #222;
+}
+
+/* Emotion Selection Boxes */
+.emotion-box {
+    background-color: #BF263C;
+    color: #EFEDE9;
+    border: none;
+    padding: 20px;
+    font-family: "Lato", serif; 
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #292521;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    width: 140px;
+}
+
+.emotion-box.dark-mode {
+    background-color: #444;
+    color: #EFEDE9;
+    box-shadow: 0 0 5px #EFEDE9;
+    
+}
+
+.emotion-box:hover {
+    background-color: #d8334a;
+    transform: scale(1.05);
+}
+
+/* Dark Mode for Playlist Box */
+.playlist-box.dark-mode {
+    background-color: #444;
+    color: #EFEDE9;
+    box-shadow: 0 0 5px #EFEDE9;
+}
+
+.playlist-box:hover {
+    background-color: #d8334a;
+    transform: scale(1.05);
+}
+
+/* Animation for Dark Mode Switch */
+html {
+    transition: background-color 0.5s ease;
+}
+
+/* Adjust size of the sun and moon icons */
+.sun, .moon {
+    width: 30px;  
+    height: 30px; 
+    margin-left: 30px;
+    transition: all 0.3s ease; 
+}
+
+.sun:hover, .moon:hover {
+    transform: scale(1.1); 
 }
