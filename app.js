@@ -29,9 +29,6 @@ async function displayRatings() {
     });
     //displayRatings();
 }
-
-document.addEventListener("DOMContentLoaded", displayRatings);
-
 document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.getElementById('darkmode-toggle');
 
@@ -39,8 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateMode() {
         if (checkbox.checked) {
             document.body.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'enabled');
         } else {
             document.body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode','disabled');
         }
     }
 
