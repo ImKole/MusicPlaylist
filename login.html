@@ -7,42 +7,47 @@
   <link rel="stylesheet" href="styles.credentials.css">
 </head>
 <body class="light-mode">
-  <div class="container">
-    <h1>Login to Your Account</h1>
-    <label for="username">Username:</label>
-    <input type="text" id="username" placeholder="Enter Username">
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter Password">
-    
-    <button onclick="login()">Login</button>
-    <p id="loginMessage"></p>
+    <div class="container">
+        <h1>Login to Your Account</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter Username" required>
 
-    <p><a href="forgotpassword.html">Forgot Password?</a></p>  <!-- Forgot Password Link -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password" required>
 
-    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-  </div>
+            <button type="submit">Login</button>
+        </form>
+        
+        <p id="loginMessage"></p>
 
-  <script>
-    function login() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+        <div class="auth-links">
+            <a href="forgotpassword.html">Forgot Password?</a> | 
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </div>
 
-      // Simulating server response for login
-      const serverResponse = {
-        status: "success",
-        message: "Login successful!",
-        user: { username: "user123" },
-      };
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-      if (serverResponse.status === "success") {
-        document.getElementById("loginMessage").innerText = serverResponse.message;
-        setTimeout(() => {
-          window.location.href = "index.html"; // Redirecting to the home page
-        }, 1000);
-      } else {
-        document.getElementById("loginMessage").innerText = "Invalid login credentials.";
-      }
-    }
-  </script>
+            const serverResponse = {
+                status: "success",
+                message: "Login successful!",
+                user: { username: "user123" },
+            };
+
+            if (serverResponse.status === "success") {
+                document.getElementById("loginMessage").innerText = serverResponse.message;
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+            } else {
+                document.getElementById("loginMessage").innerText = "Invalid login credentials.";
+            }
+        });
+    </script>
 </body>
 </html>
