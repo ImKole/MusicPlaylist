@@ -18,6 +18,7 @@
 
             <button type="submit">Login</button>
         </form>
+
         
         <p id="loginMessage"></p>
 
@@ -25,11 +26,14 @@
             <a href="forgotpassword.html">Forgot Password?</a> | 
             <a href="signup.html">Sign Up</a>
         </div>
+
+        <a href="forgotpassword.html" class="forgot-password">Forgot Password?</a>
+
     </div>
 
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form from refreshing the page
+            event.preventDefault(); 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
