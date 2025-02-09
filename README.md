@@ -9,6 +9,7 @@
 
 
 **Database Design**
-![image](https://github.com/user-attachments/assets/1400e4f1-4154-4465-941d-110541d41611)
+![image](https://github.com/user-attachments/assets/b1493ef9-23a8-41b6-9d03-a1c177d63027)
+
 
 
