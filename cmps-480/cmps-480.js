@@ -53,7 +53,7 @@ function serveStaticFile(res, path, contentType, responseCode) {
       contentType = "text/jpeg";
     }
   }
-  fs.readFile(__dirname + "/public" + path, function(err, data) {
+  fs.readFile(__dirname + "/Project" + path, function(err, data) {
     if (err) {
       res.writeHead(404, {"Content-Type": "text/plain; charset=utf-8"});
       res.end("404 Not Found");
