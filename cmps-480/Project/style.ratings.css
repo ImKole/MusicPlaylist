@@ -1,0 +1,156 @@
+/* General Page Styling */
+body {
+    background-color: #ffffff;
+    font-family: "Lato", serif;
+    font-weight: normal;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 80px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 0 19px #AAC4E7;
+    height: 85px;
+}
+
+/* Logo */
+.logo {
+    height: 100px;
+    padding-top: 25px;
+}
+
+/* Navigation Links */
+.navbar a {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: "Lato", serif;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #EB831B;
+}
+
+/* Center Content */
+.content {
+    text-align: center;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-bar {
+    width: 40%;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #AAC4E7;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-btn {
+    background-color: #AAC4E7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+}
+
+.search-btn:hover {
+    background-color: #EB831B;
+}
+
+/* Ratings Section */
+.ratings-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.Number-box {
+    background-color: #AAC4E7;
+    color: #000000;
+    border: none;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Number-box:hover {
+    background-color: #EB831B;
+    transform: scale(1.05);
+}
+
+/* Confirm Button Container */
+.confirm-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button[type="Confirm"] {
+    background-color: #AAC4E7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+}
+
+button[type="Confirm"]:hover {
+    background-color: #EB831B;
+}
+
+/* What Does My Rating Mean? Styling */
+h4 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Rating Explanation List */
+ul {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20%;
+    font-size: 16px;
+    list-style-type: none;
+}
