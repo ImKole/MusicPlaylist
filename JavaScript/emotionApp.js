@@ -9,7 +9,17 @@ const playlistContainer = document.querySelector(".playlist-container");
 // Function to display songs based on mood
 function displaySongs(mood) {
     const songList = emotionData.playlists[mood] || [];
-    alert(`Songs for ${mood}: \n${songList.map(song => song.title).join("\n")}`);
+    playlistContainer.innerHTML = ''; // Clear the existing playlist
+    if (songList.length === 0) {
+        playlistContainer.innerHTML = `<p>No songs found for mood: ${mood}</p>`;
+    } else {
+        songList.forEach(song => {
+            const songElement = document.createElement("div");
+            songElement.className = "song-item";
+            songElement.textContent = song.title;
+            playlistContainer.appendChild(songElement);
+        });
+    }
 }
 
 // Event listeners for emotion buttons
@@ -25,33 +35,8 @@ if (emotionButtons.length > 0) {
 // Event listener for the search bar
 if (searchBar) {
     searchBar.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            displaySongs(searchBar.value); // Display songs based on search query
+        if (e.key === "Enter" && searchBar.value.trim() !== "") {
+            displaySongs(searchBar.value.trim()); // Display songs based on search query
         }
     });
 }
-
-// Function to fetch and display saved playlists (mocked)
-function fetchSavedPlaylists() {
-    const savedPlaylists = [
-        { name: "Happy Playlist", songs: ["Song 1", "Song 2"] },
-        { name: "Sad Playlist", songs: ["Song 3", "Song 4"] }
-    ];
-
-    savedPlaylists.forEach(playlist => {
-        const btn = document.createElement("button");
-        btn.className = "playlist-box";
-        btn.innerHTML = playlist.name;
-        btn.addEventListener("click", () => {
-            alert(`Songs in ${playlist.name}: \n${playlist.songs.join("\n")}`);
-        });
-        playlistContainer.appendChild(btn);
-    });
-}
-
-// Call the fetchSavedPlaylists function if playlistContainer exists
-document.addEventListener("DOMContentLoaded", () => {
-    if (playlistContainer) {
-        fetchSavedPlaylists(); // Fetch and display saved playlists
-    }
-});
