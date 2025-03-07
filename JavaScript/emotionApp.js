@@ -1,42 +1,42 @@
-import { emotionData } from "./mockEmotionData.js";
-
-console.log(emotionData); // Check if data is loaded correctly
-
 const emotionButtons = document.querySelectorAll(".emotion-box");
-const searchBar = document.querySelector(".search-bar");
 const playlistContainer = document.querySelector(".playlist-container");
 
 // Function to display songs based on mood
-function displaySongs(mood) {
-    const songList = emotionData.playlists[mood] || [];
+function displaySongs(songs) {
     playlistContainer.innerHTML = ''; // Clear the existing playlist
-    if (songList.length === 0) {
-        playlistContainer.innerHTML = `<p>No songs found for mood: ${mood}</p>`;
+    if (songs.length === 0) {
+        playlistContainer.innerHTML = `<p>No songs found for this mood</p>`;
     } else {
-        songList.forEach(song => {
+        songs.forEach(song => {
             const songElement = document.createElement("div");
             songElement.className = "song-item";
-            songElement.textContent = song.title;
+            songElement.textContent = song.title; // Assuming `title` is the field in your database
             playlistContainer.appendChild(songElement);
         });
     }
 }
 
-// Event listeners for emotion buttons
-if (emotionButtons.length > 0) {
-    emotionButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const mood = button.textContent.trim();
-            displaySongs(mood); // Display songs based on mood
-        });
+// Event listener for emotion buttons
+emotionButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const mood = button.id;  // Get the ID of the clicked button
+        fetchSongsForMood(mood);  // Pass the mood to fetch songs
     });
-}
+});
 
-// Event listener for the search bar
-if (searchBar) {
-    searchBar.addEventListener("keypress", (e) => {
-        if (e.key === "Enter" && searchBar.value.trim() !== "") {
-            displaySongs(searchBar.value.trim()); // Display songs based on search query
-        }
-    });
+// Function to fetch songs for a specific mood from the server
+function fetchSongsForMood(mood) {
+    fetch(`/mood_playlist?mood=${mood}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                displaySongs(data.data); // data.data contains the songs from the database
+            } else {
+                playlistContainer.innerHTML = `<p>Error: ${data.message}</p>`;
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching mood playlist:", error);
+            playlistContainer.innerHTML = "<p>Failed to load songs</p>";
+        });
 }
