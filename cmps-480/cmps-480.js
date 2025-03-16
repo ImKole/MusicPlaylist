@@ -16,6 +16,9 @@ http.createServer(function(req, res) {
     else if (path === "/playlists") {
       getPlaylists(req, res);
     }
+    else if (path === "/mood_playlist") {
+      getMoodPlaylist(req, res); 
+    }
     else {
       serveStaticFile(res, path);
     }
@@ -165,5 +168,58 @@ function addUser(req, res) {
     });
   });
 }
+
+
+//Function to retrieve Mood Playlist
+
+function getMoodPlaylist(req, res) {
+  var conn = mysql.createConnection(credentials.connection);
+  
+  // Initialize a variable to hold the incoming request body
+  let body = '';
+
+  // Listen for chunks of data being sent in the body of the POST request
+  req.on('data', chunk => {
+    body += chunk;  // Append each chunk of data to the body variable
+  });
+
+  // When all data is received, process the request
+  req.on('end', () => {
+    try {
+      // Parse the incoming JSON data
+      const requestData = JSON.parse(body);  
+      const mood = requestData.mood;  // Extract the mood from the JSON data
+
+      // Check if mood is provided, otherwise send an error response
+      if (!mood) {
+        sendResponse(req, res, { success: false, message: "Mood not provided" });
+        return;
+      }
+
+      // Query the database for songs that match the provided mood
+      conn.query("SELECT * FROM Songs WHERE mood_id = ?", [mood], function(err, rows) {
+        var outjson = {};  // Initialize an object to store the response data
+        
+        if (err) {
+          outjson.success = false;
+          outjson.message = "Query failed: " + err;  // In case of an error with the query
+        } else {
+          outjson.success = true;
+          outjson.message = "Query successful!";  // Query was successful
+          outjson.data = rows;  // Include the resulting rows (songs)
+        }
+
+        // Send the response back to the client
+        sendResponse(req, res, outjson);
+      });
+
+      conn.end();  // Close the database connection
+    } catch (error) {
+      console.error("ERROR parsing JSON: " + error);  // Log parsing errors
+      sendResponse(req, res, { success: false, message: "Invalid JSON" });  // Send error response
+    }
+  });
+}
+// End of Function to retrieve Mood Playlist
 
 console.log("Server started on localhost: 3000; press Ctrl-C to terminate....");
