@@ -79,46 +79,7 @@ body.dark-mode {
     font-family: "Playfair Display", serif;
 }
 
-/* Search Bar */
-.search-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
 
-.search-bar {
-    width: 40%;
-    padding: 10px;
-    font-size: 18px;
-    border: 2px solid #EFEDE9; 
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease; /* Smooth border color transition */
-}
-
-.search-bar.dark-mode {
-    border-color: #EFEDE9;
-    background-color: #EFEDE9; /* Dark background for input */
-    color: #EFEDE9; /* White text in dark mode */
-}
-
-.search-btn {
-    background-color: #bf263c; 
-    color: #EFEDE9;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.search-btn:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
 
 /* Emotion Selection Boxes */
 .emotion-container {
@@ -130,90 +91,19 @@ body.dark-mode {
     margin: 30px auto;
 }
 
-/* Emotion Box Styling */
-.emotion-box {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border: none;
-    padding: 20px;
-    font-family: "Lato", serif; 
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #bf263c;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-}
 
 /* FontAwesome Icons */
-.emotion-box i {
+.playlist-container-main i {
     font-size: 35px;
     margin-bottom: 8px;
 }
 
 /* Hover Effect */
-.emotion-box:hover {
+.playlist-container-main:hover {
     background-color: #d8334a;
     transform: scale(1.05);
 }
 
-/* Saved Playlist Section */
-.subtitle {
-    font-size: 40px;
-    font-weight: 700;
-    color: #292521;
-    margin-top: 40px;
-    font-family: "Playfair Display", serif; 
-}
-
-/* Playlist Container */
-.playlist-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    max-width: 80%;
-    margin: 20px auto;
-}
-
-/* Playlist Box Styling */
-.playlist-box {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border: none;
-    padding: 20px;
-    font-family: "Lato", serif; 
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-    box-shadow: 0 0 10px #292521;
-}
-
-/* FontAwesome Music Icons */
-.playlist-box i {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-/* Hover Effect */
-.playlist-box:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
 
 /* Responsive Design for Small Screens */
 @media (max-width: 768px) {
@@ -269,26 +159,47 @@ body.dark-mode {
     color: #222;
 }
 
-/* Emotion Selection Boxes */
-.emotion-box {
+/* Emotion Selection Boxes 2*/
+.playlist-container-main {
+    border: 1px solid var(--color-secondary);
+    width: 31%;
+    height: 100%;
     background-color: #BF263C;
     color: #EFEDE9;
-    border: none;
-    padding: 20px;
     font-family: "Lato", serif; 
     font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #292521;
-    cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
+    border-radius: 5px;
+    margin: 0;
+    padding: 1em;
+    display: inline-block;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1rem;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+    position: relative;
     align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
 }
+
+.playlist-container {
+    border: 1px solid var(--color-secondary);
+    width: 45%;
+    max-width: 100%; /* Adjust max-width as needed */
+    background-color: var(--color-primary-dark);
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1rem;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+    position: relative;
+    display: inline-block;
+    margin-left: 2.25%;
+    margin-right: 2.25%;
+    overflow: auto;
+    height: 375px;
+}
+
 
 .emotion-box.dark-mode {
     background-color: #444;

@@ -16,9 +16,9 @@ http.createServer(function(req, res) {
     else if (path === "/playlists") {
       getPlaylists(req, res);
     }
-    else if (path === "/mood_playlist") {
-      getMoodPlaylist(req, res); 
-    }
+  else if (path === "/getSongs") {
+    getSongs(req, res);
+  }
     else {
       serveStaticFile(res, path);
     }
@@ -76,7 +76,7 @@ function sendResponse(req, res, data) {
   res.end(JSON.stringify(data));
 }
 
-// Function to fetch playlists
+// start Function to fetch playlists
 function getPlaylists(req, res) {
   var conn = mysql.createConnection(credentials.connection);
   conn.connect(function(err) {
@@ -86,6 +86,29 @@ function getPlaylists(req, res) {
       return;
     }
     conn.query("SELECT * FROM Playlist", function(err, rows) {
+      if (err) {
+        console.error("Query failed: " + err);
+        sendResponse(req, res, { success: false, message: "Query failed: " + err });
+      } else {
+        sendResponse(req, res, { success: true, data: rows, message: "Query successful!" });
+      }
+      conn.end();
+    });
+  });
+}
+
+
+// Start of get song function
+function getSongs(req, res, songId) {
+  var conn = mysql.createConnection(credentials.connection);
+  conn.connect(function(err) {
+    if (err) {
+      console.error("ERROR: cannot connect to database: " + err);
+      sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
+      return;
+    }
+    var query = "SELECT * FROM Songs WHERE song_id = ?";
+    conn.query(query, [songId], function(err, rows) {
       if (err) {
         console.error("Query failed: " + err);
         sendResponse(req, res, { success: false, message: "Query failed: " + err });
@@ -169,57 +192,5 @@ function addUser(req, res) {
   });
 }
 
-
-//Function to retrieve Mood Playlist
-
-function getMoodPlaylist(req, res) {
-  var conn = mysql.createConnection(credentials.connection);
-  
-  // Initialize a variable to hold the incoming request body
-  let body = '';
-
-  // Listen for chunks of data being sent in the body of the POST request
-  req.on('data', chunk => {
-    body += chunk;  // Append each chunk of data to the body variable
-  });
-
-  // When all data is received, process the request
-  req.on('end', () => {
-    try {
-      // Parse the incoming JSON data
-      const requestData = JSON.parse(body);  
-      const mood = requestData.mood;  // Extract the mood from the JSON data
-
-      // Check if mood is provided, otherwise send an error response
-      if (!mood) {
-        sendResponse(req, res, { success: false, message: "Mood not provided" });
-        return;
-      }
-
-      // Query the database for songs that match the provided mood
-      conn.query("SELECT * FROM Songs WHERE mood_id = ?", [mood], function(err, rows) {
-        var outjson = {};  // Initialize an object to store the response data
-        
-        if (err) {
-          outjson.success = false;
-          outjson.message = "Query failed: " + err;  // In case of an error with the query
-        } else {
-          outjson.success = true;
-          outjson.message = "Query successful!";  // Query was successful
-          outjson.data = rows;  // Include the resulting rows (songs)
-        }
-
-        // Send the response back to the client
-        sendResponse(req, res, outjson);
-      });
-
-      conn.end();  // Close the database connection
-    } catch (error) {
-      console.error("ERROR parsing JSON: " + error);  // Log parsing errors
-      sendResponse(req, res, { success: false, message: "Invalid JSON" });  // Send error response
-    }
-  });
-}
-// End of Function to retrieve Mood Playlist
-
 console.log("Server started on localhost: 3000; press Ctrl-C to terminate....");
+
