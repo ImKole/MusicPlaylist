@@ -99,26 +99,29 @@ function getPlaylists(req, res) {
 
 
 // Start of get song function
-function getSongs(req, res, songId) {
-  var conn = mysql.createConnection(credentials.connection);
+function getSongs(req, res) {
+  const moodId = new URL(req.url, `http://${req.headers.host}`).searchParams.get('mood');
+  const conn = mysql.createConnection(credentials.connection);
+
   conn.connect(function(err) {
     if (err) {
       console.error("ERROR: cannot connect to database: " + err);
-      sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
-      return;
+      return sendResponse(req, res, { success: false, message: "DB connection failed" });
     }
-    var query = "SELECT * FROM Songs WHERE song_id = ?";
-    conn.query(query, [songId], function(err, rows) {
+
+    const query = "SELECT * FROM Songs WHERE mood_id = ?";
+    conn.query(query, [moodId], function(err, rows) {
       if (err) {
         console.error("Query failed: " + err);
-        sendResponse(req, res, { success: false, message: "Query failed: " + err });
-      } else {
-        sendResponse(req, res, { success: true, data: rows, message: "Query successful!" });
+        return sendResponse(req, res, { success: false, message: "Query failed" });
       }
-      conn.end();
+      sendResponse(req, res, { success: true, data: rows });
     });
+
+    conn.end();
   });
 }
+
 
 function users(req, res) {
   var conn = mysql.createConnection(credentials.connection);
