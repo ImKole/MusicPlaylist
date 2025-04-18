@@ -16,9 +16,10 @@ http.createServer(function(req, res) {
     else if (path === "/playlists") {
       getPlaylists(req, res);
     }
-  else if (path === "/getSongs") {
-    getSongs(req, res);
-  }
+    else if (path === "/getSongs") {
+      getSongs(req, res);
+    }
+
     else {
       serveStaticFile(res, path);
     }
@@ -36,7 +37,7 @@ http.createServer(function(req, res) {
 }).listen(3000);
 
 function serveStaticFile(res, path, contentType, responseCode) {
-  if (!path) path = "/index.html";
+  if (!path) path = "/home.html";
   if (!responseCode) responseCode = 200;
   if (!contentType) {
     contentType = "application/octet-stream";
@@ -100,27 +101,27 @@ function getPlaylists(req, res) {
 
 // Start of get song function
 function getSongs(req, res) {
-  const moodId = new URL(req.url, `http://${req.headers.host}`).searchParams.get('mood');
-  const conn = mysql.createConnection(credentials.connection);
-
+  var conn = mysql.createConnection(credentials.connection);
   conn.connect(function(err) {
     if (err) {
       console.error("ERROR: cannot connect to database: " + err);
-      return sendResponse(req, res, { success: false, message: "DB connection failed" });
+      sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
+      return;
     }
-
-    const query = "SELECT * FROM Songs WHERE mood_id = ?";
-    conn.query(query, [moodId], function(err, rows) {
+    conn.query("SELECT * FROM Songs WHERE ", function(err, rows) {
       if (err) {
         console.error("Query failed: " + err);
-        return sendResponse(req, res, { success: false, message: "Query failed" });
+        sendResponse(req, res, { success: false, message: "Query failed: " + err });
+      } else {
+        sendResponse(req, res, { success: true, data: rows, message: "Query successful!" });
       }
-      sendResponse(req, res, { success: true, data: rows });
+      conn.end();
     });
-
-    conn.end();
   });
 }
+
+
+
 
 
 function users(req, res) {

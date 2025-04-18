@@ -1,31 +1,21 @@
-function fetchSongsByMood(mood_Id) {
-  fetch(`/getSongs?Mood=${mood_Id}`)
+function fetchSongsByMood(moodid) {
+  fetch(`/getSongs?moodid=${moodid}`)
     .then(response => response.json())
     .then(data => {
-      const container = document.getElementById('songs-container');
-      container.innerHTML = ''; // clear old songs
-
+      console.log("Received data:", data);
       if (data.success) {
-        data.data.forEach(song => {
-          const songDiv = document.createElement('div');
-          songDiv.classList.add('song');
-          songDiv.innerHTML = `
-            <h3>${song.song_title}</h3>
-            <p>Artist: ${song.artist}</p>
-            <p>Album: ${song.album}</p>
-            <p>Duration: ${song.duration} seconds</p>
-          `;
-          container.appendChild(songDiv);
+        const playlistContainer = document.getElementById('songs-container');
+        playlistContainer.innerHTML = '';
+        data.data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `Song Title: ${item.song_title}, Artist: ${item.artist}, Album: ${item.album}`;
+          playlistContainer.appendChild(listItem);
         });
       } else {
-        container.innerHTML = `<p>${data.message}</p>`;
+        console.error('Failed to load songs:', data.message);
       }
     })
-    .catch(err => {
-      console.error('Fetch error:', err);
+    .catch(error => {
+      console.error('Error fetching songs:', error);
     });
 }
-
-
-/* test*/
-  
