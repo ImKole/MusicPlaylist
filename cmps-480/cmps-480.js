@@ -99,16 +99,26 @@ function getPlaylists(req, res) {
 }
 
 
-// Start of get song function
+// Start of getSongs function
 function getSongs(req, res) {
-  var conn = mysql.createConnection(credentials.connection);
-  conn.connect(function(err) {
+  const urlParts = require('url').parse(req.url, true);
+  const moodId = urlParts.query.moodid;
+
+  if (!moodId) {
+    sendResponse(req, res, { success: false, message: "Missing moodid query parameter" });
+    return;
+  }
+
+  const conn = mysql.createConnection(credentials.connection);
+
+  conn.connect(err => {
     if (err) {
       console.error("ERROR: cannot connect to database: " + err);
       sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
       return;
     }
-    conn.query("SELECT * FROM Songs WHERE ", function(err, rows) {
+
+    conn.query("SELECT * FROM Songs WHERE mood_id = ?", [moodId], (err, rows) => {
       if (err) {
         console.error("Query failed: " + err);
         sendResponse(req, res, { success: false, message: "Query failed: " + err });
@@ -119,6 +129,8 @@ function getSongs(req, res) {
     });
   });
 }
+
+
 
 
 
