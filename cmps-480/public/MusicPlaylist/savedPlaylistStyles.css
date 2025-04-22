@@ -148,9 +148,9 @@ h3 {
 }
 
 .logo {
-    height: 75px;
-    margin: auto;
-    padding-top: 15px;
+    height: 100px;
+    padding-top: 25px;
+    padding-left: 25px;
 }
 
 .navbar {
