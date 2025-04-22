@@ -52,16 +52,24 @@ body {
     width: 100%;
     padding: 20px 0px;
     background: #EFEDE9;
-    text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: right; 
     align-items: center;
     z-index: 100;
     box-shadow: 0 0 19px #d8334a;
     box-sizing: border-box;
     overflow-x: hidden;
     height: 85px;
-    transition: background-color 0.3s ease; /* Smooth transition for header background */
+    transition: background-color 0.3s ease;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+    padding: 0 20px;
 }
 
 

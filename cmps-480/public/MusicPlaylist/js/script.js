@@ -1,19 +1,5 @@
 document.querySelector('.searchBar').addEventListener('input', function() {
     var searchTerm = this.value.toLowerCase();
-    var questContainers = document.querySelectorAll('.playlist-container-main');
-
-    questContainers.forEach(function(container) {
-        var text = container.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-            container.style.display = 'inline-block';
-        } else {
-            container.style.display = 'none';
-        }
-    });
-});
-
-document.querySelector('.searchBar').addEventListener('input', function() {
-    var searchTerm = this.value.toLowerCase();
     var questContainers = document.querySelectorAll('.playlist-container');
 
     questContainers.forEach(function(container) {
@@ -48,31 +34,62 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function fetchPlaylists() {
-    fetch('/playlists')
-      .then(response => response.json())
-      .then(data => {
-        console.log("Received data:", data);
-        if (data.success) {
-          const playlistContainer = document.getElementById('playlistContainer');
-          playlistContainer.innerHTML = '';
-          data.data.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `Playlist ID: ${item.playlist_id}, Name: ${item.playlist_name}`;
-            playlistContainer.appendChild(listItem);
-          });
-        } else {
-          console.error('Failed to load playlists:', data.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching playlists:', error);
-      });
-  }
-  
-  document.addEventListener('DOMContentLoaded', fetchPlaylists);
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get("user") || 1; // default to 1 if not in URL
+
+    fetch(`/savedplaylists?user=${user}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Received data:", data);
+            if (data.success) {
+                console.log(data);
+                data.data.forEach((playlist) => {
+                    const playlistContainer = document.createElement('div');
+                    playlistContainer.classList.add('playlist-container-main');
+
+                    const listHeader = document.createElement('h1');
+                    listHeader.textContent = `${playlist.playlist_name}`;
+                    playlistContainer.appendChild(listHeader);
+
+                    const songsList = document.createElement('ol');
+                    let songsPresent = false;
+
+                    // Iterate over each possible song slot
+                    for (let i = 1; i <= 5; i++) {
+                        const songTitle = playlist[`song_title_${i}`];
+                        const artist = playlist[`artist_${i}`];
+                        if (songTitle && artist) { // Check for non-null song title and artist
+                            const songItem = document.createElement('li');
+                            songItem.textContent = `${songTitle} by ${artist}`;
+                            songsList.appendChild(songItem);
+                            songsPresent = true;
+                        }
+                    }
+
+                    if (songsPresent) {
+                        playlistContainer.appendChild(songsList);
+                    } else {
+                        const noSongsMessage = document.createElement('p');
+                        noSongsMessage.textContent = 'No songs in this playlist.';
+                        playlistContainer.appendChild(noSongsMessage);
+                    }
+
+                    document.body.appendChild(playlistContainer);
+                });
+            } else {
+                console.error('Failed to load playlists:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching playlists:', error);
+        });
+}
+document.addEventListener('DOMContentLoaded', fetchPlaylists);
+
 
 
 //Mock Json request for the database to gather and input saved playlists onto the page
+
 /*function displaySavedPlaylists(playlists) {
     const container = document.querySelector('.container');
     playlists.forEach(playlist => {
