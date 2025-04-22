@@ -50,10 +50,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 0px;
+    padding: 20px 80px;
     background: #EFEDE9;
     display: flex;
-    justify-content: right; 
+    justify-content: space-between; 
     align-items: center;
     z-index: 100;
     box-shadow: 0 0 19px #d8334a;
