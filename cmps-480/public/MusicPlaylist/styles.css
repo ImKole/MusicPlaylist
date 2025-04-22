@@ -1,7 +1,7 @@
 /* General Page Styling */
 body {
     background-color: #EFEDE9;
-    font-family: "Lato", serif; 
+    font-family: "Lato", serif;
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
@@ -15,19 +15,91 @@ body.dark-mode {
     color: #EFEDE9;
 }
 
+/* Mood Buttons Styling */
+#mood-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+#mood-buttons button {
+    background-color: #BF263C; /* Primary color */
+    color: #EFEDE9; /* Light text color */
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-family: "Lato", serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect for Mood Buttons */
+#mood-buttons button:hover {
+    background-color: #d8334a; /* Darker shade on hover */
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#mood-buttons button:active {
+    background-color: #9c1d2f; /* Even darker shade on click */
+}
+
+/* Dark Mode Styling for Mood Buttons */
+body.dark-mode #mood-buttons button {
+    background-color: #BF263C;
+    color: #EFEDE9;
+    border-radius: 50px;
+}
+
+body.dark-mode #mood-buttons button:hover {
+    background-color: #D8334A;
+}
+
+body.dark-mode #mood-buttons button:active {
+    background-color: #9c1d2f;
+}
+
+/* Dark Mode Toggle Button */
+#darkmode-toggle {
+    display: none; /* Hide the checkbox itself */
+}
+
+.sun, .moon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .sun {
+    display: none; /* Hide sun icon in dark mode */
+}
+
+body.dark-mode .moon {
+    display: inline-block; /* Show moon icon in dark mode */
+}
+
 /* Header Styling */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 80px;
+    padding: 20px 0px;
     background: #EFEDE9;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
     box-shadow: 0 0 19px #d8334a;
+    box-sizing: border-box;
+    overflow-x: hidden;
     height: 85px;
     transition: background-color 0.3s ease; /* Smooth transition for header background */
 }
@@ -41,6 +113,7 @@ body.dark-mode {
 .logo {
     height: 100px;
     padding-top: 25px;
+    padding-left: 25px;
 }
 
 /* Navigation Links */
@@ -64,156 +137,65 @@ body.dark-mode {
     color: #292521;
 }
 
-/* Main Content Styling */
-.content {
-    text-align: center;
-    margin-top: 120px;
-}
-
-/* Title Styling (Updated to Playfair Display) */
+/* Title Styling */
 .title {
     font-size: 50px;
     font-weight: 700;
+    text-align: center;
     color: #bf263c;
     margin-bottom: 15px;
     font-family: "Playfair Display", serif;
 }
 
-/* Search Bar */
-.search-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.search-bar {
-    width: 40%;
-    padding: 10px;
-    font-size: 18px;
-    border: 2px solid #EFEDE9; 
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease; /* Smooth border color transition */
-}
-
-.search-bar.dark-mode {
-    border-color: #EFEDE9;
-    background-color: #EFEDE9; /* Dark background for input */
-    color: #EFEDE9; /* White text in dark mode */
-}
-
-.search-btn {
+#songs-container {
+    display: none; 
+    
+    width: 90%;
+    color: #EFEDE9;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 20px;
     background-color: #bf263c; 
-    color: #EFEDE9;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-}
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+  }
 
-.search-btn:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
+  #songs-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: none; /* hidden by default */
+  }
+  
+  #songs-container.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  
+  .song-title {
+    color: #EFEDE9; 
+  }
+  
+  .artist {
+    color: #292521; 
+  }
+  
+  .album {
+    color: #EFEDE9; 
+  }
+  
+  #songs-container li {
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  
 
-/* Emotion Selection Boxes */
-.emotion-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    max-width: 80%;
-    margin: 30px auto;
-}
+  
 
-/* Emotion Box Styling */
-.emotion-box {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border: none;
-    padding: 20px;
-    font-family: "Lato", serif; 
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #bf263c;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-}
-
-/* FontAwesome Icons */
-.emotion-box i {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-/* Hover Effect */
-.emotion-box:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
-
-/* Saved Playlist Section */
-.subtitle {
-    font-size: 40px;
-    font-weight: 700;
-    color: #292521;
-    margin-top: 40px;
-    font-family: "Playfair Display", serif; 
-}
-
-/* Playlist Container */
-.playlist-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    max-width: 80%;
-    margin: 20px auto;
-}
-
-/* Playlist Box Styling */
-.playlist-box {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border: none;
-    padding: 20px;
-    font-family: "Lato", serif; 
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-    box-shadow: 0 0 10px #292521;
-}
-
-/* FontAwesome Music Icons */
-.playlist-box i {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-/* Hover Effect */
-.playlist-box:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
 
 /* Responsive Design for Small Screens */
 @media (max-width: 768px) {
@@ -255,78 +237,3 @@ body.dark-mode {
     }
 }
 
-/* Dark Mode Button */
-#darkmode-toggle:checked + svg.sun {
-    display: none; /* Hide sun icon when in dark mode */
-}
-
-#darkmode-toggle:checked + svg.sun + svg.moon {
-    display: inline-block; /* Show moon icon when in dark mode */
-}
-
-.dark-mode .search-btn {
-    background-color: #BF263C;
-    color: #222;
-}
-
-/* Emotion Selection Boxes */
-.emotion-box {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border: none;
-    padding: 20px;
-    font-family: "Lato", serif; 
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #292521;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    width: 140px;
-}
-
-.emotion-box.dark-mode {
-    background-color: #444;
-    color: #EFEDE9;
-    box-shadow: 0 0 5px #EFEDE9;
-    
-}
-
-.emotion-box:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
-
-/* Dark Mode for Playlist Box */
-.playlist-box.dark-mode {
-    background-color: #444;
-    color: #EFEDE9;
-    box-shadow: 0 0 5px #EFEDE9;
-}
-
-.playlist-box:hover {
-    background-color: #d8334a;
-    transform: scale(1.05);
-}
-
-/* Animation for Dark Mode Switch */
-html {
-    transition: background-color 0.5s ease;
-}
-
-/* Adjust size of the sun and moon icons */
-.sun, .moon {
-    width: 30px;  
-    height: 30px; 
-    margin-left: 30px;
-    transition: all 0.3s ease; 
-}
-
-.sun:hover, .moon:hover {
-    transform: scale(1.1); 
-}

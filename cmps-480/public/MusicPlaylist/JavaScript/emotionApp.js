@@ -1,57 +1,35 @@
-import { emotionData } from "./mockEmotionData.js";
+function fetchSongsByMood(moodid) {
+  const playlistContainer = document.getElementById('songs-container');
+  playlistContainer.classList.remove('show'); // Reset in case it's already shown
+  playlistContainer.innerHTML = ''; // Clear old content
 
-console.log(emotionData); // Check if data is loaded correctly
-
-const emotionButtons = document.querySelectorAll(".emotion-box");
-const searchBar = document.querySelector(".search-bar");
-const playlistContainer = document.querySelector(".playlist-container");
-
-// Function to display songs based on mood
-function displaySongs(mood) {
-    const songList = emotionData.playlists[mood] || [];
-    alert(`Songs for ${mood}: \n${songList.map(song => song.title).join("\n")}`);
-}
-
-// Event listeners for emotion buttons
-if (emotionButtons.length > 0) {
-    emotionButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const mood = button.textContent.trim();
-            displaySongs(mood); // Display songs based on mood
+  fetch(`/getSongs?moodid=${moodid}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log("Received data:", data);
+      if (data.success) {
+        data.data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `
+            <span class="song-title">Title: ${item.song_title}</span>,
+            <span class="artist">Artist: ${item.artist}</span>,
+            <span class="album">Album: ${item.album}</span>
+          `;
+          playlistContainer.appendChild(listItem);
         });
+
+        // Trigger reflow so fade-in works
+        void playlistContainer.offsetWidth;
+        playlistContainer.classList.add('show');
+      } else {
+        console.error('Failed to load songs:', data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching songs:', error);
     });
 }
 
-// Event listener for the search bar
-if (searchBar) {
-    searchBar.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            displaySongs(searchBar.value); // Display songs based on search query
-        }
-    });
-}
 
-// Function to fetch and display saved playlists (mocked)
-function fetchSavedPlaylists() {
-    const savedPlaylists = [
-        { name: "Happy Playlist", songs: ["Song 1", "Song 2"] },
-        { name: "Sad Playlist", songs: ["Song 3", "Song 4"] }
-    ];
 
-    savedPlaylists.forEach(playlist => {
-        const btn = document.createElement("button");
-        btn.className = "playlist-box";
-        btn.innerHTML = playlist.name;
-        btn.addEventListener("click", () => {
-            alert(`Songs in ${playlist.name}: \n${playlist.songs.join("\n")}`);
-        });
-        playlistContainer.appendChild(btn);
-    });
-}
 
-// Call the fetchSavedPlaylists function if playlistContainer exists
-document.addEventListener("DOMContentLoaded", () => {
-    if (playlistContainer) {
-        fetchSavedPlaylists(); // Fetch and display saved playlists
-    }
-});

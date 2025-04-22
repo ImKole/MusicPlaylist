@@ -16,12 +16,19 @@ http.createServer(function(req, res) {
     else if (path === "/playlists") {
       getPlaylists(req, res);
     }
+
     else if (path === "/findSongs") {
       findSongs(req, res);
     }
     else if (path === "/updateRank") {
       updateRank(req, res);
     }
+
+    else if (path === "/getSongs") {
+      getSongs(req, res);
+    }
+
+
     else {
       serveStaticFile(res, path);
     }
@@ -39,7 +46,7 @@ http.createServer(function(req, res) {
 }).listen(3000);
 
 function serveStaticFile(res, path, contentType, responseCode) {
-  if (!path) path = "/index.html";
+  if (!path) path = "/home.html";
   if (!responseCode) responseCode = 200;
   if (!contentType) {
     contentType = "application/octet-stream";
@@ -79,7 +86,7 @@ function sendResponse(req, res, data) {
   res.end(JSON.stringify(data));
 }
 
-// Function to fetch playlists
+// start Function to fetch playlists
 function getPlaylists(req, res) {
   var conn = mysql.createConnection(credentials.connection);
   conn.connect(function(err) {
@@ -99,15 +106,19 @@ function getPlaylists(req, res) {
     });
   });
 }
+
 function findSongs(req, res) {
   var conn = mysql.createConnection(credentials.connection);
   conn.connect(function(err) {
+
     if (err) {
       console.error("ERROR: cannot connect to database: " + err);
       sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
       return;
     }
+
     conn.query("SELECT * FROM Songs", function(err, rows) {
+
       if (err) {
         console.error("Query failed: " + err);
         sendResponse(req, res, { success: false, message: "Query failed: " + err });
@@ -117,7 +128,9 @@ function findSongs(req, res) {
       conn.end();
     });
   });
-} 
+
+}
+
 function users(req, res) {
   var conn = mysql.createConnection(credentials.connection);
   // connect to database
@@ -192,3 +205,4 @@ function addUser(req, res) {
 }
 
 console.log("Server started on localhost: 3000; press Ctrl-C to terminate....");
+
