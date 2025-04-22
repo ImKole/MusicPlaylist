@@ -3,6 +3,9 @@
 <head>
     <title>Playlist Ratings</title>
     <link rel="stylesheet" href="style.ratings.css">
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
 </head>
 <body>
 <header class="header">
@@ -15,28 +18,14 @@
         <a href="InitialPage.html">Log Out</a>
     </nav>
 </header>
-
+<h1 style="color: black;">Playlist</h1>
+<div id="grid-container"></div>
+<ul id="playlistContainer" style="color: black;">
+    <li></li>
+</ul>
 <main class="content">
-    <br> <br>
-    <h1>Playlist Ratings</h1>
-    <h3>Search Your Song Below</h3>
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search for a song">
-        <button type="Search">Search</button>
-    </div>
-    <br>
-    <h3>Rate Your Song Below</h3>
-    <div class="ratings-container">
-        <button class="Number-box">1</button>    
-        <button class="Number-box">2</button>
-        <button class="Number-box">3</button>
-        <button class="Number-box">4</button>
-        <button class="Number-box">5</button>
-    </div>
-
-    <div class="confirm-btn-container">
-        <button type="Confirm">Confirm Rating</button>
-    </div>
+        <br> <br>
+        <h1>Playlist Ratings</h1>
     <br>
     <h4>What Does My Rating Mean?</h4>
     <ul>
@@ -47,7 +36,21 @@
         <li>- Songs with the same ratings will appear near the same spot, but will change based on how many times the song has been played.</li>
     </ul>
 </main>
+<div class="confirm-btn-container">
+    <button id="updateRankBtn">Update Rank</button>
+</button>
+</div>
 
+<script>
+    // Update Alert
+    document.addEventListener("DOMContentLoaded", function () {
+      const button = document.getElementById("updateRankBtn");
+  
+      button.addEventListener("click", function () {
+        alert("Changes Saved Successfully");
+      });
+    });
+  </script>
 <script type="module" src="app.js"></script>
 <class="dark-mode">
 <input type="checkbox" id="darkmode-toggle">
@@ -76,7 +79,6 @@
    </g>
 </g>
 </svg></label>
-
 
 </body>
 </html>
