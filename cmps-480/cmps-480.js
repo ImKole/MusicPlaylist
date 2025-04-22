@@ -27,8 +27,9 @@ http.createServer(function(req, res) {
     else if (path === "/getSongs") {
       getSongs(req, res);
     }
-
-
+    else if (path === "/savedplaylists") {
+      getSavedPlaylists(req, res);
+    }
     else {
       serveStaticFile(res, path);
     }
@@ -230,6 +231,58 @@ function getSongs(req, res) {
       } else {
         sendResponse(req, res, { success: true, data: rows, message: "Query successful!" });
       }
+      conn.end();
+    });
+  });
+}
+
+// Function to fetch playlists
+const url = require('url');
+
+function getSavedPlaylists(req, res) {
+  var conn = mysql.createConnection(credentials.connection);
+  conn.connect(function(err) {
+    if (err) {
+      console.error("ERROR: cannot connect to database: " + err);
+      sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
+      return;
+    }
+
+    // Extract user from URL: ?user=2
+    const queryObject = url.parse(req.url, true).query;
+    const userId = parseInt(queryObject.user) || 1;
+
+    //query that joins three tables to fetch the required playlist and song details
+    const sql = `
+      SELECT
+          sp.playlist_id,
+          p.playlist_name,
+          s1.song_title AS song_title_1, s1.artist AS artist_1,
+          s2.song_title AS song_title_2, s2.artist AS artist_2,
+          s3.song_title AS song_title_3, s3.artist AS artist_3,
+          s4.song_title AS song_title_4, s4.artist AS artist_4,
+          s5.song_title AS song_title_5, s5.artist AS artist_5
+      FROM Saved_playlist sp
+          JOIN Playlist p ON sp.playlist_id = p.playlist_id
+          LEFT JOIN Songs s1 ON p.Songs_song_id_1 = s1.song_id
+          LEFT JOIN Songs s2 ON p.Songs_song_id_2 = s2.song_id
+          LEFT JOIN Songs s3 ON p.Songs_song_id_3 = s3.song_id
+          LEFT JOIN Songs s4 ON p.Songs_song_id_4 = s4.song_id
+          LEFT JOIN Songs s5 ON p.Songs_song_id_5 = s5.song_id
+      WHERE sp.user_id = ? `
+    ;
+
+    console.log(`Running Query for user_id: ${userId}`);
+
+    conn.query(sql, [userId], function(err, results) {
+      if (err) {
+        console.error("Query failed: " + err);
+        sendResponse(req, res, { success: false, message: "Query failed: " + err });
+        conn.end();
+        return;
+      }
+
+      sendResponse(req, res, { success: true, data: results, message: "Queries successful!" });
       conn.end();
     });
   });
