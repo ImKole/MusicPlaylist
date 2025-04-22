@@ -16,9 +16,18 @@ http.createServer(function(req, res) {
     else if (path === "/playlists") {
       getPlaylists(req, res);
     }
+
+    else if (path === "/findSongs") {
+      findSongs(req, res);
+    }
+    else if (path === "/updateRank") {
+      updateRank(req, res);
+    }
+
     else if (path === "/getSongs") {
       getSongs(req, res);
     }
+
 
     else {
       serveStaticFile(res, path);
@@ -98,27 +107,18 @@ function getPlaylists(req, res) {
   });
 }
 
+function findSongs(req, res) {
+  var conn = mysql.createConnection(credentials.connection);
+  conn.connect(function(err) {
 
-// Start of getSongs function
-function getSongs(req, res) {
-  const urlParts = require('url').parse(req.url, true);
-  const moodId = urlParts.query.moodid;
-
-  if (!moodId) {
-    sendResponse(req, res, { success: false, message: "Missing moodid query parameter" });
-    return;
-  }
-
-  const conn = mysql.createConnection(credentials.connection);
-
-  conn.connect(err => {
     if (err) {
       console.error("ERROR: cannot connect to database: " + err);
       sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
       return;
     }
 
-    conn.query("SELECT * FROM Songs WHERE mood_id = ?", [moodId], (err, rows) => {
+    conn.query("SELECT * FROM Songs", function(err, rows) {
+
       if (err) {
         console.error("Query failed: " + err);
         sendResponse(req, res, { success: false, message: "Query failed: " + err });
@@ -128,13 +128,8 @@ function getSongs(req, res) {
       conn.end();
     });
   });
+
 }
-
-
-
-
-
-
 
 function users(req, res) {
   var conn = mysql.createConnection(credentials.connection);
@@ -185,11 +180,12 @@ function addUser(req, res) {
         console.error("ERROR: cannot connect: " + e);
         return;
       }
-      // query the database
-      //conn.query("INSERT INTO USERS (NAME) VALUE ('" + injson.name + "')", function(err, rows, fields) {
-      conn.query("INSERT INTO USERS (NAME) VALUE (?)", [injson.name], function(err, rows, fields) {
+      // Update the database
+      conn.query("UPDATE songs SET rank = ? WHERE id = ?", 
+        [injson.rank, injson.song_id], 
+        function(err, result) {
         // build json result object
-        var outjson = {};
+        const outjson = {};
         if (err) {
           // query failed
           outjson.success = false;
@@ -201,7 +197,7 @@ function addUser(req, res) {
           outjson.message = "Query successful!";
         }
         // return json object that contains the result of the query
-        sendResponse(req, res, outjson);
+        res.json(outjson);
       });
       conn.end();
     });
