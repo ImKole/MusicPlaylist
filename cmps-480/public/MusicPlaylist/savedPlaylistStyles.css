@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    background: #ffffff;
+    background: #EFEDE9;
     flex-direction: column;
 }
 
@@ -117,8 +117,10 @@ p {
 }
 
 h1 {
-    color: white;
+    color: var(--color-primary-dark);
     margin-bottom: 1rem;
+    margin: auto;
+    font-family: 'Lato', sans-serif;
 }
 
 h3 {
@@ -132,38 +134,45 @@ h3 {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 3vh 10px; /* Adjust padding based on viewport height */
-    background: var(--color-primary-dark);
+    padding: 20px 80px;
+    background: #EFEDE9;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     z-index: 100;
-    border-bottom: 1px solid var(--color-secondary);
-    box-shadow: 0 0 15px black;
-    height: 10vh; /* Set height based on viewport height */
+    box-shadow: 0 0 19px #d8334a;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    height: 85px;
+    transition: background-color 0.3s ease;
 }
 
 .logo {
     height: 75px;
-    margin: 0;
+    margin: auto;
+    padding-top: 15px;
 }
 
 .navbar {
-    height: 100%; /* Make navbar fill the entire height of the header */
-    display: flex;
+    display:flex;
     align-items: center;
-
+    justify-content: space-between; /* This creates space between links and icons */
+    padding-right: 1rem;
+    margin-right: 2rem;
 }
 
 .navbar a {
-    position: relative;
-    font-size: 2vh; /* Adjust font size based on viewport height */
-    color: var(--color-secondary);
-    font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 18px;
+    color: #bf263c;
+    font-weight: 600;
     text-decoration: none;
-    margin-left: 2vw; /* Adjust margin based on viewport width */
-    font-family: "Monofonto", sans-serif;
+    margin-left: 30px;
+    font-family: "Lato", serif;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #292521;
 }
 
 .flex-container {
@@ -204,20 +213,20 @@ h3 {
 }
 
 .playlist-container-main {
-    border: 1px solid var(--color-secondary);
-    width: 31%;
-    height: 100%;
-    background-color: var(--color-primary-dark);
-    border-radius: 5px;
-    margin: 0;
-    padding: 1em;
-    display: inline-block;
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-top: 1rem;
-    text-align: center;
-    box-shadow: 0 0 15px black;
-    position: relative;
+    width: 90%;
+    color: #EFEDE9;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 20px;
+    background-color: #bf263c; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
