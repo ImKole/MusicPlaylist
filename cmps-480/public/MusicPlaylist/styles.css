@@ -9,12 +9,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: #292521;
-    color: #EFEDE9;
-}
-
 /* Mood Buttons Styling */
 #mood-buttons {
     display: flex;
@@ -49,40 +43,6 @@ body.dark-mode {
     background-color: #9c1d2f; /* Even darker shade on click */
 }
 
-/* Dark Mode Styling for Mood Buttons */
-body.dark-mode #mood-buttons button {
-    background-color: #BF263C;
-    color: #EFEDE9;
-    border-radius: 50px;
-}
-
-body.dark-mode #mood-buttons button:hover {
-    background-color: #D8334A;
-}
-
-body.dark-mode #mood-buttons button:active {
-    background-color: #9c1d2f;
-}
-
-/* Dark Mode Toggle Button */
-#darkmode-toggle {
-    display: none; /* Hide the checkbox itself */
-}
-
-.sun, .moon {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-body.dark-mode .sun {
-    display: none; /* Hide sun icon in dark mode */
-}
-
-body.dark-mode .moon {
-    display: inline-block; /* Show moon icon in dark mode */
-}
 
 /* Header Styling */
 .header {
@@ -104,10 +64,6 @@ body.dark-mode .moon {
     transition: background-color 0.3s ease; /* Smooth transition for header background */
 }
 
-.header.dark-mode {
-    background: #292521;
-    box-shadow: 0 0 19px #BF263C;
-}
 
 /* Logo */
 .logo {
@@ -118,7 +74,7 @@ body.dark-mode .moon {
 
 /* Navigation Links */
 .navbar {
-    display: flex;
+    display:flex;
     align-items: center;
     justify-content: space-between; /* This creates space between links and icons */
 }
@@ -191,9 +147,6 @@ body.dark-mode .moon {
     margin-bottom: 10px;
     font-family: 'Lato', sans-serif;
   }
-  
-  
-
   
 
 

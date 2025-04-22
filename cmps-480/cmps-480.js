@@ -204,5 +204,36 @@ function addUser(req, res) {
   });
 }
 
+// Get Songs functiojn for Mood buttons
+function getSongs(req, res) {
+  const urlParts = require('url').parse(req.url, true);
+  const moodId = urlParts.query.moodid;
+
+  if (!moodId) {
+    sendResponse(req, res, { success: false, message: "Missing moodid query parameter" });
+    return;
+  }
+
+  const conn = mysql.createConnection(credentials.connection);
+
+  conn.connect(err => {
+    if (err) {
+      console.error("ERROR: cannot connect to database: " + err);
+      sendResponse(req, res, { success: false, message: "Cannot connect to database: " + err });
+      return;
+    }
+
+    conn.query("SELECT * FROM Songs WHERE mood_id = ?", [moodId], (err, rows) => {
+      if (err) {
+        console.error("Query failed: " + err);
+        sendResponse(req, res, { success: false, message: "Query failed: " + err });
+      } else {
+        sendResponse(req, res, { success: true, data: rows, message: "Query successful!" });
+      }
+      conn.end();
+    });
+  });
+}
+
 console.log("Server started on localhost: 3000; press Ctrl-C to terminate....");
 
