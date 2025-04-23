@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --color-primary: #fff;
+    --color-primary-dark: #0e0e0e;
+    --color-secondary: #bf263c;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: #EFEDE9;
+    flex-direction: column;
+}
+
+.dark-mode {
+    --color-primary: ;
+    --color-primary-dark: #000000;
+    --color-secondary: #bf263c;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: #292521;
+
+}
+
+label {
+    width: 100px;
+    height: 50px;
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 200px;
+    box-shadow: inset 0px 5px 15px rgba(0,0,0,0), inset 0px -5px 15px rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+
+label:after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: linear-gradient(180deg,#ffcc89,#d8860b);
+    border-radius: 180px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+input:checked + label {
+    background: #242424;
+}
+
+input:checked + label:after {
+    left: 95px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+label:active:after {
+    width: 55px;
+}
+
+label svg {
+    position: absolute;
+    width: 30px; 
+    top: -375px;
+    z-index: 100;
+}
+
+label svg.sun{
+    left: 10px;
+    fill: #ffcc89;
+    transition: 0.3s;
+}
+
+label svg.moon{
+    left: 60px;
+    fill: #7e7e7e;
+    transition: 0.3s;
+}
+
+input:checked + label svg.sun {
+    fill: #7e7e7e;
+}
+
+input:checked + label svg.moon {
+    fill: #fff;
+}
+
+
+p {
+    color: white;
+}
+
+h1 {
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+}
+
+h3 {
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 80px;
+    background: #EFEDE9;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 0 19px #d8334a;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    height: 85px;
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+    height: 100px;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.navbar {
+    display:flex;
+    align-items: center;
+    justify-content: space-between; /* This creates space between links and icons */
+    padding-right: 1rem;
+    margin-right: 2rem;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #bf263c;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: "Lato", serif;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #292521;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+}
+
+.search-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 15vh; /* Adjust margin based on viewport height */
+    display: flex;
+    justify-content: center;
+}
+
+.searchBar {
+    color: rgb(0, 0, 0);
+    height: 4vh; /* Adjust height based on viewport height */
+    width: 30vw;
+    font-size: 2vh; /* Adjust font size based on viewport height */
+    padding: 1vh 1vw; /* Adjust padding based on viewport size */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+.searchBar:hover {
+    background-color: rgb(214, 213, 213);
+}
+
+.container {
+    background: var(--color-primary-dark);
+    margin-top: 5vh;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.playlist-container-main {
+    width: 90%;
+    color: #EFEDE9;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 20px;
+    background-color: #bf263c; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist-container {
+    border: 1px solid var(--color-secondary);
+    width: 45%;
+    max-width: 100%; /* Adjust max-width as needed */
+    background-color: var(--color-primary-dark);
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1rem;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+    position: relative;
+    display: inline-block;
+    margin-left: 2.25%;
+    margin-right: 2.25%;
+    overflow: auto;
+    height: 375px;
+}
+
+.item-image {
+    height: 4.5rem;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.count-container {
+    display: flex; /* Use flexbox to control layout */
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.arrow {
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--color-secondary); /* You can change the color as needed */
+}
+
+.arrow.left {
+    margin-right: 10px; /* Space between left arrow and number */
+}
+
+.arrow.right {
+    margin-left: 10px; /* Space between number and right arrow */
+}
+
+.count {
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.checkmark {
+    height: .8rem;
+    width: .8rem;
+    margin-left: .2rem;
+}
