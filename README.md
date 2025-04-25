@@ -8,7 +8,7 @@
 •_Key Resources:_ That includes UX/UI designer (to enhance usability), and tools for mood tagging of songs and user feedback analysis<br>
 •	_Key Partners:_ We see value in working with music APIs, UX designers, and College/University communities for direct access to primary users.<br>
 •	_Revenue Streams:_ Our base app is currently free. Although future premium upgrades could include advanced customization, enhanced analytics, and exclusive playlist storage, like “Favorite Moods.”<br>
-•	_Cost Structure: _Our main costs are in development, design, and testing. <br>
+•	_Cost Structure:_Our main costs are in development, design, and testing. <br>
 
 **Use Cases** <br>
 •_Use Case 1:_ Karah, a busy student, loves music but doesn’t have time to build playlists. She liked the idea of a one-click mood-based playlist that just works. <br>
