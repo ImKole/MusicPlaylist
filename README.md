@@ -11,7 +11,7 @@ Business Model Canvas (Text)
 •	Cost Structure: Our main costs are in development, design, and testing. 
 
 Use Cases
-•	Use Case 1: Karah, a busy student, loves music but doesn’t have time to build playlists. She liked the idea of a one-click mood-based playlist that just works.
+•	Use Case 1: Karah, a busy student, loves music but doesn’t have time to build playlists. She liked the idea of a one-click mood-based playlist that just works. <br>
 •	Use Case 2: Sydney wants a bit more control. She appreciated the idea of tweaking her playlists, adding her favorites, and ranking songs.
 •	Use Case 3: Liz said she often listens to music when working out or chilling and would love discovering new songs based on how she’s feeling.
 We’ve baked these insights directly into our features: mood filters, song ranking, playlist saving, and simple design.
